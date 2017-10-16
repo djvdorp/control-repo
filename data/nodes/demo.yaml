@@ -1,3 +1,37 @@
 ---
   classes:
     - role::demo
+    - role::librenms
+  profile::librenms::root_password: 'Password1!'
+  profile::librenms::librenms_user_password_hash: '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19' # mysql> select password('password');
+  profile::librenms::timezone: 'Europe/Amsterdam'
+  profile::librenms::server_name: 'librenms.example.com'
+  profile::librenms::snmp_community: 'myservers'
+  profile::librenms::librenms_packages:
+    - composer
+    - fping
+    - git
+    - graphviz
+    - imagemagick
+    #- mariadb-client
+    #- mariadb-server
+    - mtr-tiny
+    - nginx-full
+    - nmap
+    - php7.0-cli
+    - php7.0-curl
+    - php7.0-fpm
+    - php7.0-gd
+    - php7.0-mcrypt
+    - php7.0-mysql
+    - php7.0-snmp
+    - php7.0-xml
+    - php7.0-zip
+    - python-memcache
+    - python-mysqldb
+    - rrdtool
+    - snmp
+    - snmpd
+    - whois
+    - cron
+    - logrotate
