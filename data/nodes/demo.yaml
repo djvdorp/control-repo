@@ -1,6 +1,5 @@
 ---
   classes:
-    - role::demo
     - role::librenms
   profile::librenms::root_password: 'Password1!'
   profile::librenms::librenms_user_password_hash: '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19' # mysql> select password('password');
