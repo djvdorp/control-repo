@@ -1,6 +1,6 @@
 #!/bin/bash
-PUPPET_REPO=https://github.com/bitfield/control-repo.git
-IDENTITY="-i /Users/john/.ssh/pbg.pem"
+PUPPET_REPO=https://github.com/djvdorp/control-repo.git
+IDENTITY="-i /home/daniel/.ssh/id_rsa_daniel"
 if [ "$#" -lt 2 ]; then
   cat <<USAGE
 Usage: $0 TARGET HOSTNAME [BRANCH]
@@ -15,8 +15,8 @@ HOSTNAME=${2}
 BRANCH=${3:-production}
 OPTIONS="-oStrictHostKeyChecking=no"
 echo -n "Copying bootstrap script... "
-scp ${IDENTITY} ${OPTIONS} $(dirname $0)/bootstrap.sh ubuntu@${TARGET}:/tmp
+scp ${IDENTITY} ${OPTIONS} $(dirname $0)/bootstrap.sh root@${TARGET}:/tmp
 echo "done."
 echo -n "Bootstrapping... "
-ssh ${IDENTITY} ${OPTIONS} ubuntu@${TARGET} "sudo bash /tmp/bootstrap.sh ${PUPPET_REPO} ${HOSTNAME} ${BRANCH}"
+ssh ${IDENTITY} ${OPTIONS} root@${TARGET} "sudo bash /tmp/bootstrap.sh ${PUPPET_REPO} ${HOSTNAME} ${BRANCH}"
 echo "done."
