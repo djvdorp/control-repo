@@ -1,2 +1,43 @@
 ---
-  classes: []
+  classes:
+    - role::base
+  firewall_drop: true
+  users:
+    'daniel':
+      comment: 'Daniel van Dorp'
+      uid: '1010'
+      purge_sshkeys: true
+      sshkeys:
+        - 'ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAsp+MaCukmGh07Jt3v8Zs86tbHBhlcyTumWTHWdMpRZRcUtoZ1x3bwahIcm3NlaV98JxzhdksPF9Gr843fp/XysGwJGCLDe4BnE4ptOugA9Vdo5N2ulSqktOB+G7jrs7yx2HixpAmooHDTvzoILJyZVVu1IVLNP0PHHglD5q2xnGMmrQMrUXBeGqfxjdyTBvEtJUCRsX/rIFS4oMDObTPmWD8CSnfPSCB9RvCLqFiGBwuV9jPqR/FrtPbLcsxDXhN/s80HLByZ/5VdpYklqeeiN1TK4obLih7JpCBeLBK+cAzFeoORKGi17zHjDa5H4j+nUCCBA+nkmvwhrMrsZBHcw== daniel@Daniel-van-Dorps-MacBook-Pro.local'
+        - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDB25c7YfC8MyVhP3/mjVXLSlWJSfmlFXEZXPiKwGCvIOgREe99BO6Qv5qkiPYM1rwEwM3ycXfRdSHXaSCzNFh8DG8dD2+TT6hUnTU8FqAQBeoiV8GUy9Zmkh0XXJ5rs97fjeZz9aIuHOc5ktKOjR+PEsHEcjUWhoqVrZOwfrXKOxv8wYnF15V6b/fWnVA5CtCzEPnvn7bTaMaSKaBZQAe1EqWlKvvR5vpmxoII9SlkSODh/mg5LKL1g2iZy4cmMMDALkAPw1dqhqeJMNirva2uIPSDl8Wd1nQiVU5cILqsbGf4w+jvRxFmsNd++ba386Pj65tdvy1Tw1iVbywPMxEd daniel.van.dorp@mendix.com'
+  allow_users:
+    - 'daniel'
+  sudoers:
+    - 'daniel'
+  firewall_allow_list: []
+  firewall_deny_list: []
+  profile::common::misc_packages:
+    - 'nano'
+    - 'htop'
+    - 'screen'
+    - 'tmux'
+    - 'wget'
+    - 'aptitude'
+    - 'axel'
+    - 'vim-nox'
+    - 'nmon'
+    - 'subversion'
+    - 'ncdu'
+    - 'ack-grep'
+    - 'silversearcher-ag'
+    - 'iotop'
+    - 'iftop'
+    - 'bwm-ng'
+    - 'nload'
+    - 'slurm'
+    - 'tinc'
+    - 'edac-utils'
+    - 'smartmontools'
+    - 'molly-guard'
+    - 'snmp'
+    - 'tig'

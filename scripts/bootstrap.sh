@@ -16,6 +16,7 @@ apt-get update
 apt-get -y install git puppet-agent
 cd /etc/puppetlabs/code/environments
 mv production production.orig
+echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 git clone ${PUPPET_REPO} production
 cd production
 git checkout ${BRANCH}
