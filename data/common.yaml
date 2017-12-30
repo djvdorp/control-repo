@@ -6,6 +6,7 @@
     'daniel':
       comment: 'Daniel van Dorp'
       uid: '1010'
+      home_mode: '0755'
       purge_sshkeys: true
       sshkeys:
         - 'ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAsp+MaCukmGh07Jt3v8Zs86tbHBhlcyTumWTHWdMpRZRcUtoZ1x3bwahIcm3NlaV98JxzhdksPF9Gr843fp/XysGwJGCLDe4BnE4ptOugA9Vdo5N2ulSqktOB+G7jrs7yx2HixpAmooHDTvzoILJyZVVu1IVLNP0PHHglD5q2xnGMmrQMrUXBeGqfxjdyTBvEtJUCRsX/rIFS4oMDObTPmWD8CSnfPSCB9RvCLqFiGBwuV9jPqR/FrtPbLcsxDXhN/s80HLByZ/5VdpYklqeeiN1TK4obLih7JpCBeLBK+cAzFeoORKGi17zHjDa5H4j+nUCCBA+nkmvwhrMrsZBHcw== daniel@Daniel-van-Dorps-MacBook-Pro.local'
