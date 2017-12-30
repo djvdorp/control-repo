@@ -37,4 +37,13 @@ class profile::get_iplayer {
         hour    => '*',
         require => [ File['/usr/local/bin/get_iplayer'], File['/home/daniel/bbcrips/'], File['/home/daniel/logs/'] ],
     }
+
+    cron { 'cleanup_bbcrips':
+        user    => 'daniel',
+        ensure  => present,
+        command => 'cd /home/daniel/bbcrips/; rm Bobby_Friction_-*',
+        minute  => '58',
+        hour    => '*',
+        require => File['/home/daniel/bbcrips/'],
+    }
 }
