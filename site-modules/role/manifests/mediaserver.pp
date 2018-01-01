@@ -4,4 +4,5 @@ class role::mediaserver {
   include profile::flexget
   include profile::mashpodder
   include profile::packtpub
+  include profile::plexmediaserver
 }
