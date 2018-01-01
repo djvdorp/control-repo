@@ -42,3 +42,5 @@
     - 'molly-guard'
     - 'snmp'
     - 'tig'
+    - 'apt-file'
+    - 'apt-transport-https'
