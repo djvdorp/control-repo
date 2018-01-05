@@ -5,4 +5,5 @@ class role::mediaserver {
   include profile::mashpodder
   include profile::packtpub
   include profile::plexmediaserver
+  include profile::nginx
 }
