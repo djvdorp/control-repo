@@ -50,17 +50,21 @@ class profile::nginx {
         require => Package['nginx'],
     }
 
-    file { '/etc/nginx/sites-available/kimsufi2.conf':
-        ensure => file,
-        mode => '0644',
-        source => 'puppet:///modules/profile/etc/nginx/sites-available/kimsufi2.conf',
-        require => Package['nginx'],
+    lookup('profile::nginx::sites-available', Array[String], 'unique').each |String $name| {
+        file { "/etc/nginx/sites-available/${name}":
+            ensure => file,
+            mode => '0644',
+            source => "puppet:///modules/profile/etc/nginx/sites-available/${name}",
+            require => Package['nginx'],
+        }
     }
 
-    file { '/etc/nginx/sites-enabled/kimsufi2.conf':
-        ensure => 'link',
-        target => '/etc/nginx/sites-available/kimsufi2.conf',
-        require => File['/etc/nginx/sites-available/kimsufi2.conf'],
-        notify  => Service['nginx'],
+    lookup('profile::nginx::sites-enabled', Array[String], 'unique').each |String $name| {
+        file { "/etc/nginx/sites-enabled/${name}":
+            ensure => 'link',
+            target => "/etc/nginx/sites-available/${name}",
+            require => File["/etc/nginx/sites-available/${name}"],
+            notify  => Service['nginx'],
+        }
     }
 }
