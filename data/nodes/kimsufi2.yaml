@@ -1,6 +1,7 @@
 ---
   classes:
     - role::mediaserver
+  profile::puppet::autorun_puppet: false
   profile::nginx::sites-available:
     - kimsufi2.conf
   profile::nginx::sites-enabled:
