@@ -1,21 +1,25 @@
-class profile::get_iplayer {
-    ensure_packages([
-        'wget',
-        'curl',
-        'libwww-perl',
-        'liblwp-protocol-https-perl',
-        'libmojolicious-perl',
-        'libxml-libxml-perl',
-        'libcgi-pm-perl',
-        'atomicparsley',
-        'ffmpeg',
-    ])
+include apt
 
-    file { '/usr/local/bin/get_iplayer':
-        ensure  => file,
-        mode    => '0755',
-        source  => 'https://raw.github.com/get-iplayer/get_iplayer/master/get_iplayer',
-    }
+class profile::get_iplayer {
+    apt::ppa { 'ppa:jon-hedgerows/get-iplayer': }
+
+    ensure_packages(
+        [
+            'wget',
+            'curl',
+            'libwww-perl',
+            'liblwp-protocol-https-perl',
+            'libmojolicious-perl',
+            'libxml-libxml-perl',
+            'libcgi-pm-perl',
+            'atomicparsley',
+            'ffmpeg',
+            'get-iplayer',
+        ],
+        {
+            require         => Class['apt::update'],
+        }
+    )
 
     file { '/home/daniel/bbcrips/':
         ensure  => directory,
@@ -32,10 +36,10 @@ class profile::get_iplayer {
     cron { 'get_iplayer':
         user    => 'daniel',
         ensure  => present,
-        command => '/usr/local/bin/get_iplayer --type=radio --modes=flashaudio,iphone,flashaac,realaudio --output="/home/daniel/bbcrips/" --pvr 2>&1>>/home/daniel/logs/get-iplayer.log',
+        command => '/usr/bin/get-iplayer --type=radio --modes=flashaudio,iphone,flashaac,realaudio --output="/home/daniel/bbcrips/" --pvr 2>&1>>/home/daniel/logs/get-iplayer.log',
         minute  => '40',
         hour    => '*',
-        require => [ File['/usr/local/bin/get_iplayer'], File['/home/daniel/bbcrips/'], File['/home/daniel/logs/'] ],
+        require => [ Package['get-iplayer'], File['/home/daniel/bbcrips/'], File['/home/daniel/logs/'] ],
     }
 
     cron { 'cleanup_bbcrips':
