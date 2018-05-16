@@ -1,7 +1,7 @@
 class profile::librenms (
     String $root_password,
     String $librenms_user_password_hash,
-    String $timezone,
+    String $time_zone,
     String $server_name,
     String $snmp_community,
     Array[String] $librenms_packages,
@@ -15,7 +15,7 @@ class profile::librenms (
     )
 
     class { 'timezone':
-      timezone => $timezone,
+      timezone => $time_zone,
     }
 
     service { 'php7.0-fpm':
@@ -102,7 +102,7 @@ class profile::librenms (
       ensure  => present,
       mode    => '0644',
       content => epp('profile/etc/php/7.0/fpm/php.ini.epp', {
-        'timezone'        => $timezone,
+        'timezone'        => $time_zone,
       }),
       require => Package['php7.0-fpm'],
       notify  => Service['php7.0-fpm'],
@@ -112,7 +112,7 @@ class profile::librenms (
       ensure  => present,
       mode    => '0644',
       content => epp('profile/etc/php/7.0/cli/php.ini.epp', {
-        'timezone'        => $timezone,
+        'timezone'        => $time_zone,
       }),
       require => Package['php7.0-cli'],
     }
@@ -177,7 +177,7 @@ class profile::librenms (
       ensure  => directory,
       owner   => 'librenms',
       group   => 'librenms',
-      mode    => '0755',
+      mode    => '0775',
       require => Vcsrepo['/opt/librenms'],
     }
 }
