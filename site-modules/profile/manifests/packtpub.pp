@@ -28,7 +28,7 @@ class profile::packtpub {
     vcsrepo { '/home/daniel/Packt-Publishing-Free-Learning/':
         ensure   => present,
         provider => 'git',
-        source   => 'https://github.com/igbt6/Packt-Publishing-Free-Learning.git',
+        source   => 'https://github.com/luk6xff/Packt-Publishing-Free-Learning.git',
         user     => 'daniel',
         group    => 'daniel',
         revision => 'master',
@@ -37,7 +37,7 @@ class profile::packtpub {
 
     python::virtualenv { '/home/daniel/Packt-Publishing-Free-Learning/venv' :
         ensure       => present,
-        version      => 'system',
+        version      => '3',
         systempkgs   => true,
         distribute   => true,
         owner        => 'daniel',
@@ -55,7 +55,7 @@ class profile::packtpub {
     cron { 'packtpub':
         user    => 'daniel',
         ensure  => present,
-        command => 'source /home/daniel/Packt-Publishing-Free-Learning/venv/bin/activate; cd /home/daniel/Packt-Publishing-Free-Learning; python src/packtPublishingFreeEbook.py -gd 2>&1>>/home/daniel/logs/packtpub.log',
+        command => 'source /home/daniel/Packt-Publishing-Free-Learning/venv/bin/activate; cd /home/daniel/Packt-Publishing-Free-Learning; python3 src/packtPublishingFreeEbook.py -gd 2>&1>>/home/daniel/logs/packtpub.log',
         minute  => '0',
         hour    => [9, 21],
         require => Class['python'],
