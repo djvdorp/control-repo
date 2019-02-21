@@ -45,17 +45,18 @@ class profile::packtpub {
         require      => Vcsrepo['/home/daniel/Packt-Publishing-Free-Learning/'],
     }
 
-    python::requirements { '/home/daniel/Packt-Publishing-Free-Learning/requirements.txt' :
-        virtualenv => '/home/daniel/Packt-Publishing-Free-Learning/venv',
-        owner      => 'daniel',
-        group      => 'daniel',
-        require    => Vcsrepo['/home/daniel/Packt-Publishing-Free-Learning/'],
+    python::pip { 'packt-cli':
+        url           => 'git+https://github.com/luk6xff/Packt-Publishing-Free-Learning.git@master',
+        virtualenv    => '/home/daniel/Packt-Publishing-Free-Learning/venv',
+        owner         => 'daniel',
+        group         => 'daniel',
+        require       => Vcsrepo['/home/daniel/Packt-Publishing-Free-Learning/'],
     }
 
     cron { 'packtpub':
         user    => 'daniel',
         ensure  => present,
-        command => 'source /home/daniel/Packt-Publishing-Free-Learning/venv/bin/activate; cd /home/daniel/Packt-Publishing-Free-Learning; python3 src/packtPublishingFreeEbook.py -gd 2>&1>>/home/daniel/logs/packtpub.log',
+        command => 'source /home/daniel/Packt-Publishing-Free-Learning/venv/bin/activate; cd /home/daniel/Packt-Publishing-Free-Learning; venv/bin/packt-cli -gd 2>&1>>/home/daniel/logs/packtpub.log',
         minute  => '0',
         hour    => [9, 21],
         require => Class['python'],
