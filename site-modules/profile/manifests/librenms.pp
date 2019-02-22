@@ -18,10 +18,10 @@ class profile::librenms (
       timezone => $time_zone,
     }
 
-    service { 'php7.0-fpm':
+    service { 'php7.1-fpm':
         ensure  => 'running',
         enable  => true,
-        require => Package['php7.0-fpm'],
+        require => Package['php7.1-fpm'],
     }
 
     service { 'nginx':
@@ -98,23 +98,23 @@ class profile::librenms (
         user       => 'librenms@localhost',
     }
 
-    file { '/etc/php/7.0/fpm/php.ini':
+    file { '/etc/php/7.1/fpm/php.ini':
       ensure  => present,
       mode    => '0644',
-      content => epp('profile/etc/php/7.0/fpm/php.ini.epp', {
+      content => epp('profile/etc/php/7.1/fpm/php.ini.epp', {
         'timezone'        => $time_zone,
       }),
-      require => Package['php7.0-fpm'],
-      notify  => Service['php7.0-fpm'],
+      require => Package['php7.1-fpm'],
+      notify  => Service['php7.1-fpm'],
     }
 
-    file { '/etc/php/7.0/cli/php.ini':
+    file { '/etc/php/7.1/cli/php.ini':
       ensure  => present,
       mode    => '0644',
-      content => epp('profile/etc/php/7.0/cli/php.ini.epp', {
+      content => epp('profile/etc/php/7.1/cli/php.ini.epp', {
         'timezone'        => $time_zone,
       }),
-      require => Package['php7.0-cli'],
+      require => Package['php7.1-cli'],
     }
 
     file { '/etc/nginx/sites-enabled/default':
