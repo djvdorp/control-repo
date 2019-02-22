@@ -7,6 +7,7 @@ class profile::librenms (
     Array[String] $librenms_packages,
 ) {
     include ::apt
+    apt::ppa { 'ppa:ondrej/php': }
 
     ensure_packages($librenms_packages,
       {
