@@ -39,7 +39,7 @@ class profile::flexget {
     cron { 'flexget':
         user    => 'daniel',
         ensure  => present,
-        command => 'source /home/daniel/flexget/bin/activate; /home/daniel/flexget/bin/flexget --cron --loglevel debug --logfile /home/daniel/logs/flexget.log execute 2>&1>>/home/daniel/logs/flexget.log',
+        command => 'source /home/daniel/flexget/bin/activate; /home/daniel/flexget/bin/flexget --cron --loglevel debug --logfile /home/daniel/logs/flexget.log execute --disable-tracking 2>&1>>/home/daniel/logs/flexget.log',
         minute  => '20',
         hour    => '*',
         require => Class['python'],
