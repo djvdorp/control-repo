@@ -8,6 +8,11 @@ class profile::common (
     timezone => 'Europe/Amsterdam',
   }
 
+  class { 'locales':
+    default_locale => 'en_US.UTF-8',
+    locales        => ['en_US.UTF-8 UTF-8'],
+  }
+
   file { '/etc/apt/apt.conf.d/00InstallRecommends':
       ensure => file,
       mode => '0644',

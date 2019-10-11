@@ -8,6 +8,7 @@ mod 'puppetlabs-ntp',           '6.0.0'
 mod 'puppetlabs-stdlib',        '4.16.0'
 mod 'saz-timezone',             '3.4.0'
 mod 'saz-sudo',                 '4.2.0'
+mod 'saz-locales',              '2.5.1'
 mod 'stm-debconf',              '2.0.0' # for saz-timezone
 mod 'puppet-staging',           '2.2.0' # for puppetlabs-mysql
 mod 'brainsware-composer',      '0.3.5'
