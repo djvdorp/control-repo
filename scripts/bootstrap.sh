@@ -10,8 +10,10 @@ hostname ${HOSTNAME}
 echo ${HOSTNAME} >/etc/hostname
 source /etc/lsb-release
 apt-key adv --fetch-keys http://apt.puppetlabs.com/DEB-GPG-KEY-puppet
-wget http://apt.puppetlabs.com/puppetlabs-release-pc1-${DISTRIB_CODENAME}.deb
-dpkg -i puppetlabs-release-pc1-${DISTRIB_CODENAME}.deb
+#wget http://apt.puppetlabs.com/puppetlabs-release-pc1-${DISTRIB_CODENAME}.deb
+wget http://apt.puppetlabs.com/puppet5-release-${DISTRIB_CODENAME}.deb
+#dpkg -i puppetlabs-release-pc1-${DISTRIB_CODENAME}.deb
+dpkg -i puppet5-release-${DISTRIB_CODENAME}.deb
 apt-get update
 apt-get -y install git puppet-agent
 cd /etc/puppetlabs/code/environments
