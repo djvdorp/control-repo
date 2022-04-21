@@ -1,6 +1,6 @@
 # Set up Puppet config and cron run
 class profile::puppet (
-    Boolean $autorun_puppet = true,
+    Boolean $autorun_puppet = false,
 ) {
   file { '/usr/local/bin/run-puppet':
     source => 'puppet:///modules/profile/puppet/run-puppet.sh',
