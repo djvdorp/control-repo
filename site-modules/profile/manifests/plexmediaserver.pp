@@ -5,7 +5,7 @@ class profile::plexmediaserver {
 
     apt::source { 'plexmediaserver':
         location => 'https://downloads.plex.tv/repo/deb',
-        release  => './public',
+        release  => 'public',
         repos    => 'main',
         include => {
             src   => false,
