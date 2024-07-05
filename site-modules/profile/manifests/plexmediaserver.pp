@@ -1,8 +1,9 @@
-include apt
+#include apt
 
 class profile::plexmediaserver {
     #curl https://downloads.plex.tv/plex-keys/PlexSign.key | sudo apt-key add -
 
+    include apt
     apt::source { 'plexmediaserver':
         location => 'https://downloads.plex.tv/repo/deb',
         release  => 'public',

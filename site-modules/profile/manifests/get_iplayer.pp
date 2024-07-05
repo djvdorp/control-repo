@@ -1,6 +1,7 @@
-include apt
+#include apt
 
 class profile::get_iplayer {
+    include apt
     apt::ppa { 'ppa:m-grant-prg/utils': }
 
     ensure_packages(

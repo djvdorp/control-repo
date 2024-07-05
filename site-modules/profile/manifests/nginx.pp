@@ -1,8 +1,9 @@
-include apt
+#include apt
 
 class profile::nginx {
     $distro = downcase($::operatingsystem)
 
+    include apt
     apt::source { 'nginx-mainline':
         location    => "https://nginx.org/packages/mainline/${distro}",
         key         => {
