@@ -14,7 +14,7 @@ mod 'puppet-staging',           '2.2.0' # for puppetlabs-mysql
 mod 'brainsware-composer',      '0.3.5'
 mod 'puppet-archive',           '1.3.0' # for brainsware-composer
 mod 'thias-sysctl',             '1.0.6'
-mod 'puppetlabs/firewall',      '1.9.0'
+mod 'puppetlabs-firewall',      '3.0.0'
 mod 'puppetlabs-mysql',         '5.1.0'
 mod 'puppetlabs-vcsrepo',       '1.5.0'
 mod 'puppetlabs-apt',           '4.4.1'
