@@ -1,7 +1,6 @@
 class profile::packtpub {
     ensure_packages([
         'virtualenv',
-        'python-virtualenv',
         'python3-virtualenv',
     ])
 
