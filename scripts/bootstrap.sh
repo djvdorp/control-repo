@@ -24,6 +24,8 @@ echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 git clone ${PUPPET_REPO} production
 cd production
 git checkout ${BRANCH}
+/opt/puppetlabs/puppet/bin/gem install faraday-net_http -v 3.0.2
+/opt/puppetlabs/puppet/bin/gem install faraday -v 2.8.1
 /opt/puppetlabs/puppet/bin/gem install r10k
 /opt/puppetlabs/puppet/bin/r10k puppetfile install --verbose
 /opt/puppetlabs/bin/puppet apply --environment=production /etc/puppetlabs/code/environments/production/manifests/
