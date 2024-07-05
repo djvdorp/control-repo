@@ -11,17 +11,19 @@ echo ${HOSTNAME} >/etc/hostname
 source /etc/lsb-release
 apt-key adv --fetch-keys http://apt.puppetlabs.com/DEB-GPG-KEY-puppet
 #wget http://apt.puppetlabs.com/puppetlabs-release-pc1-${DISTRIB_CODENAME}.deb
-wget http://apt.puppetlabs.com/puppet5-release-${DISTRIB_CODENAME}.deb
+#wget http://apt.puppetlabs.com/puppet5-release-${DISTRIB_CODENAME}.deb
+wget http://apt.puppetlabs.com/puppet7-release-${DISTRIB_CODENAME}.deb
 #dpkg -i puppetlabs-release-pc1-${DISTRIB_CODENAME}.deb
-dpkg -i puppet5-release-${DISTRIB_CODENAME}.deb
+#dpkg -i puppet5-release-${DISTRIB_CODENAME}.deb
+dpkg -i puppet7-release-${DISTRIB_CODENAME}.deb
 apt-get update
-apt-get -y install git puppet-agent
+apt-get -y install git build-essential puppet-agent
 cd /etc/puppetlabs/code/environments
 mv production production.orig
 echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 git clone ${PUPPET_REPO} production
 cd production
 git checkout ${BRANCH}
-/opt/puppetlabs/puppet/bin/gem install r10k --no-rdoc --no-ri
+/opt/puppetlabs/puppet/bin/gem install r10k
 /opt/puppetlabs/puppet/bin/r10k puppetfile install --verbose
 /opt/puppetlabs/bin/puppet apply --environment=production /etc/puppetlabs/code/environments/production/manifests/

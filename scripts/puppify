@@ -1,6 +1,6 @@
 #!/bin/bash
 PUPPET_REPO=https://github.com/djvdorp/control-repo.git
-IDENTITY="-i /home/daniel/.ssh/id_rsa_daniel"
+IDENTITY="-i /home/daniel/.ssh/id_rsa"
 if [ "$#" -lt 2 ]; then
   cat <<USAGE
 Usage: $0 TARGET HOSTNAME [BRANCH]
